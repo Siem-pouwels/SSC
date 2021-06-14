@@ -1,12 +1,14 @@
 <template>
     <div>
-        About page
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
+        Login
     </div>
 </template>
 <script>
 export default {
-
+    data() {
+        return{
+            
+        }
+    }
 }
 </script>
