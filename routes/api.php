@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\PackTimeCheck;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,9 @@ Route::post('login', 'App\Http\Controllers\LoginController@login');
 Route::post('logout', 'App\Http\Controllers\LoginController@logout');
 
 Route::get('players', 'App\Http\Controllers\PlayerController@getPlayers');
+
+Route::middleware([PackTimeCheck::class])->group(function () {
+    Route::post('pack_1', 'App\Http\Controllers\PackController@packBasic');
+    Route::post('pack_2', 'App\Http\Controllers\PackController@packNormal');
+    Route::post('pack_3', 'App\Http\Controllers\PackController@packPremium');
+});

@@ -4,6 +4,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import NotFound from './components/NotFound';
+import Players from './components/Players';
 
 
 export default{
@@ -44,7 +45,13 @@ export default{
                })
            }
        
-          }
+        }
+        ,
+        {
+            path: '/players',
+            component: Players,
+            name: 'Players'
+        }
           
     ]
 }

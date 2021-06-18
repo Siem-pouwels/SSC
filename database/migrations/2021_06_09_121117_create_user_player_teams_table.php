@@ -18,7 +18,9 @@ class CreateUserPlayerTeamsTable extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('player_id');
-            $table->unsignedBigInteger('team_id');
+            $table->unsignedBigInteger('team_id')->nullable()->default(null);
+            $table->integer('position')->nullable()->default(null);
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');

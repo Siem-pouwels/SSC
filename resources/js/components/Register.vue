@@ -20,8 +20,8 @@
                 <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Confirm Password" type="password" v-model="form.password_confirmation" name="password_confirmation">
             </div>
             <div class="p-2 w-full">
-                <label for="team_name">Team name</label>
-                <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Password" type="password" v-model="form.password" name="password">
+                <label for="teamName">Team name</label>
+                <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Team name" type="text" v-model="form.teamName">
             </div>
             <div class="p-2 w-full mt-4">
                 <button @click.prevent="saveForm" type="submit" class="flex text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Register</button>
@@ -37,7 +37,7 @@ export default {
                 name: '',
                 email: '',
                 password:'',
-                team_name: '',
+                teamName: '',
                 password_confirmation:''
             },
             errors:[]

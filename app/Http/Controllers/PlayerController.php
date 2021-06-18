@@ -9,6 +9,6 @@ class PlayerController extends Controller
 {
     public function getPlayers(){
         $player = Player::where('name', 'Lionel Messi')->get('name');
-        dd(json_encode($player));
+        return json_encode($player);
     }
 }
