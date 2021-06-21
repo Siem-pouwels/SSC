@@ -28,6 +28,7 @@ Route::post('logout', 'App\Http\Controllers\LoginController@logout');
 Route::get('players', 'App\Http\Controllers\PlayerController@getPlayers');
 
 Route::get('team', 'App\Http\Controllers\TeamController@getTeam');
+Route::get('team_options', 'App\Http\Controllers\TeamController@getOptions');
 Route::post('team_update', 'App\Http\Controllers\TeamController@updatePlayerTeam');
 Route::post('team_delete', 'App\Http\Controllers\TeamController@DeleteTeam');
 
