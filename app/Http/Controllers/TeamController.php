@@ -39,11 +39,18 @@ class TeamController extends Controller
     }
     // dd(json_encode($player));
     public function updatePlayerTeam(Request $request){
-        $id = Auth::user()->id;
-        dd("save");
+        //$id = Auth::user()->id;
+
+        foreach ($request as $player) {
+            user_player_teams::where([
+                    ['player_id', '=', $player->id],
+                    ['user_id', '=', 3]//<-- change to $id for it to work
+                ])
+                ->update('position', '=>', $player->position);
+        }
     }
     public function DeleteTeam(Request $request){
-        $id = Auth::user()->id;
+        //$id = Auth::user()->id;
         dd("delete");
     }
 }
