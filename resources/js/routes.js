@@ -37,21 +37,38 @@ export default{
             path: "/dashboard",
             name: "Dashboard",
             component: Dashboard,
-           beforeEnter: (next) =>{
-               axios.get('/api/athenticated').then(()=>{
-                   next()
-               }).catch(()=>{
-                   return next({ name: 'Login'})
-               })
-           }
+            beforeEnter: (to, form, next) =>{
+                axios.get('/api/authenticated').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({ name: 'Login'})
+                })
+            }
        
-        }
-        ,
+        },
         {
             path: '/players',
+            name: 'Players',
             component: Players,
-            name: 'Players'
-        }
-          
+            beforeEnter: (to, form, next) =>{
+                axios.get('/api/authenticated').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({ name: 'Login'})
+                })
+            }
+        },
+        // {
+        //     path: '/packstore',
+        //     name: 'Packstore',
+        //     component: Packstore,
+        //     beforeEnter: (to, form, next) =>{
+        //         axios.get('/api/authenticated').then(()=>{
+        //             next()
+        //         }).catch(()=>{
+        //             return next({ name: 'Login'})
+        //         })
+        //     }
+        // },
     ]
 }

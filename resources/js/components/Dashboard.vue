@@ -5,7 +5,6 @@
         Name: {{user.name}} <br>
         Email: {{user.email}}<br><br>
         <button @click.prevent="logout">Logout</button>
-        <button @click.prevent="getPlayers">getPlayers</button>
         </div>
 
     </div>
@@ -23,16 +22,11 @@ export default {
                 this.$router.push({ name: "Home"})
             })
         }
-        },
-        getPlayers(){
-            axios.get('/api/players').then(()=>{
-                console.log(this);
-            })
-        },
-        mounted(){
-            axios.get('/api/user').then((res)=>{
-                this.user = res.data
-            })
-        }
+    },
+    mounted(){
+        axios.get('/api/user').then((res)=>{
+            this.user = res.data
+        })
+    }
 }
 </script>

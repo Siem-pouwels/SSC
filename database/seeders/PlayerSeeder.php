@@ -19,7 +19,7 @@ class PlayerSeeder extends Seeder
       DB::table('players')->delete();
       $json = Storage::disk('local')->get('player.json');
       $data = json_decode($json);
-      $storage_path = Storage::url('public/Minifaces_png/');
+      $storage_path = Storage::url('public/player_faces/');
       // dd($storage_path);
             foreach($data as $player)
             {
