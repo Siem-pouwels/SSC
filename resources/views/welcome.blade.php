@@ -28,6 +28,9 @@
     <li class="nav-item mr-sm-0">
       <router-link class="nav-link" to="/register"><div class="gold-nav hoverable">Register</div></router-link>
     </li>
+    <li class="nav-item mr-sm-0">
+      <router-link class="nav-link" to="/collection"><div class="gold-nav hoverable">Collection</div></router-link>
+    </li>
     </ul>
     
   </div>

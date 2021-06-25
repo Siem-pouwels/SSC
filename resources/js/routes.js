@@ -7,6 +7,7 @@ import NotFound from './components/NotFound';
 import Players from './components/Players';
 import TeamBuilder from './components/TeamBuilder';
 import Packstore from './components/Packstore';
+import Collection from './components/Collection';
 
 
 export default{
@@ -100,6 +101,18 @@ export default{
             path: '/packstore',
             name: 'Packstore',
             component: Packstore,
+            beforeEnter: (to, form, next) =>{
+                axios.get('/api/athenticated').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({ name: 'Login'})
+                })
+            }
+        },
+        {
+            path: '/collection',
+            name: 'Collection',
+            component: Collection,
             beforeEnter: (to, form, next) =>{
                 axios.get('/api/athenticated').then(()=>{
                     next()
