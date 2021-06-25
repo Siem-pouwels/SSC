@@ -9,6 +9,10 @@ body {
     font-size: 20px;
     text-transform: uppercase;
 }
+.logo {
+    width: 16px;
+    height: 16px;
+}
 /* code for making hover effects */
 .hoverable {
     display: inline-block;

@@ -5,6 +5,8 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import NotFound from './components/NotFound';
 import Players from './components/Players';
+import TeamBuilder from './components/TeamBuilder';
+import Packstore from './components/Packstore';
 
 
 export default{
@@ -38,7 +40,7 @@ export default{
             name: "Dashboard",
             component: Dashboard,
             beforeEnter: (to, form, next) =>{
-                axios.get('/api/authenticated').then(()=>{
+                axios.get('/api/athenticated').then(()=>{
                     next()
                 }).catch(()=>{
                     return next({ name: 'Login'})
@@ -46,18 +48,42 @@ export default{
             }
        
         },
-        {
-            path: '/players',
-            name: 'Players',
-            component: Players,
-            beforeEnter: (to, form, next) =>{
-                axios.get('/api/authenticated').then(()=>{
-                    next()
-                }).catch(()=>{
-                    return next({ name: 'Login'})
-                })
-            }
-        },
+        // {
+        //     path: "/players",
+        //     name: "Players",
+        //     component: Players,
+        //    beforeEnter: (to, form, next) =>{
+        //        axios.get('/api/athenticated').then(()=>{
+        //            next()
+        //        }).catch(()=>{
+        //            return next({ name: 'Login'})
+        //        })
+        //    }
+       
+        //   },
+          {
+            path: "/logout",
+           beforeEnter: (to, form, next) =>{
+               axios.get('/api/logout').then(()=>{
+                   next()
+               }).catch(()=>{
+                   return next({ name: 'Home'})
+               })
+           }
+       
+          },
+        // {
+        //     path: '/players',
+        //     name: 'Players',
+        //     component: Players,
+        //     beforeEnter: (to, form, next) =>{
+        //         axios.get('/api/authenticated').then(()=>{
+        //             next()
+        //         }).catch(()=>{
+        //             return next({ name: 'Login'})
+        //         })
+        //     }
+        // },
         // {
         //     path: '/packstore',
         //     name: 'Packstore',
@@ -70,5 +96,17 @@ export default{
         //         })
         //     }
         // },
+        {
+            path: '/packstore',
+            name: 'Packstore',
+            component: Packstore,
+            beforeEnter: (to, form, next) =>{
+                axios.get('/api/athenticated').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({ name: 'Login'})
+                })
+            }
+        },
     ]
 }

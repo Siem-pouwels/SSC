@@ -11,7 +11,9 @@ use App\Models\User;
 use App\Models\Pack;
 use App\Models\user_player_teams;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
 
 class PackController extends Controller
@@ -68,13 +70,38 @@ class PackController extends Controller
                 ]);
             }
         }
-        $duplicate_count = $duplicate_count += Duplicate::find('rating'); // adds the duplicate rating up
+        if(Duplicate::find('rating')){
+            $duplicate_count = $duplicate_count += Duplicate::find('rating'); // adds the duplicate rating up
+        }
         Duplicate::updateOrCreate(
             ['id' => $id, 'rating' => $duplicate_count],
         );
         $pack_update = Pack::where('user_id', '=', $id || 'type', '=', '3');
         $pack_update->updated_at = Carbon::now();
 
-        return json_encode($pack); // returns the opened pack
+        return response()->json($pack); // returns the opened pack
+    }
+
+    public function timeBasic()
+    {
+        $user = Auth::user();
+        $current_time = Carbon::now();
+
+        $pack_time = Pack::select('updated_at')
+        ->where('user_id', '=', $user->id)
+        ->where('type', '=', '2')
+        ->get()
+        ->diff($current_time);
+        dd($pack_time->diffForHumans());
+        // $remainingTime = $pack_time
+        // dd($current_time->diffInSeconds($pack_time));
+        $remainingTime = $pack_time->diff($current_time);
+        // $remainingTime = 4;
+        // $interval = $pack_time->diff($current_time);
+        print_r($remainingTime);
+        // Pack::
+        // $pack_time =+ Carbon();
+        // $time_left = $current_time $pack_time;
+        // dd($time_left);
     }
 }
