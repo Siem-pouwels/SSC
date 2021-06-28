@@ -52,7 +52,11 @@ class TeamController extends Controller
     }
     public function DeleteTeam(Request $request){
         //$id = Auth::user()->id;
-        dd("delete");
+        if($request == 'Delete')
+        {
+            user_player_teams::where('user_id', '=', 3)//<-- change to $id for it to work
+            ->update('position', '=>', NULL);
+        }
     }
 }
 
