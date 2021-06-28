@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img :src="'../storage/player_faces/card-design.png'">
         <!-- <div id="container">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             
@@ -10,7 +11,7 @@
         </ol>
     
         <div class="carousel-inner">
-          <div class="item active">
+          <div class="item active"> 
             <img src="../storage/static/packs.jpg" alt="Packstore" style="width:100%;">
             <div class="carousel-caption">
               <h3>Packstore</h3>

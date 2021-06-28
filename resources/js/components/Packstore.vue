@@ -8,18 +8,6 @@
 <script>
 export default {
     methods:{
-        pack_1_check() {
-            axios.get('/api/pack_1').then((res)=>{
-                this.pack = res.data
-                console.log(this.players)
-            })
-        },
-        pack_2_check() {
-            
-        },
-        pack_3_check() {
-            
-        },
         pack_1(){
             axios.post('/api/pack_1').then((res)=>{
                 this.pack = res.data

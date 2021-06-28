@@ -15,6 +15,19 @@ export default{
     linkActiveClass: 'font-semibold',
     routes: [
         {
+            path: "/dashboard",
+            name: "Dashboard",
+            component: Dashboard,
+            beforeEnter: (to, form, next) =>{
+                axios.get('/api/athenticated').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({ name: 'Login'})
+                })
+            }
+       
+        },
+        {
             path: '*',
             component: NotFound
         },
@@ -37,32 +50,6 @@ export default{
             name: 'Login'
         },
         {
-            path: "/dashboard",
-            name: "Dashboard",
-            component: Dashboard,
-            beforeEnter: (to, form, next) =>{
-                axios.get('/api/athenticated').then(()=>{
-                    next()
-                }).catch(()=>{
-                    return next({ name: 'Login'})
-                })
-            }
-       
-        },
-        // {
-        //     path: "/players",
-        //     name: "Players",
-        //     component: Players,
-        //    beforeEnter: (to, form, next) =>{
-        //        axios.get('/api/athenticated').then(()=>{
-        //            next()
-        //        }).catch(()=>{
-        //            return next({ name: 'Login'})
-        //        })
-        //    }
-       
-        //   },
-          {
             path: "/logout",
            beforeEnter: (to, form, next) =>{
                axios.get('/api/logout').then(()=>{
@@ -73,30 +60,6 @@ export default{
            }
        
           },
-        // {
-        //     path: '/players',
-        //     name: 'Players',
-        //     component: Players,
-        //     beforeEnter: (to, form, next) =>{
-        //         axios.get('/api/authenticated').then(()=>{
-        //             next()
-        //         }).catch(()=>{
-        //             return next({ name: 'Login'})
-        //         })
-        //     }
-        // },
-        // {
-        //     path: '/packstore',
-        //     name: 'Packstore',
-        //     component: Packstore,
-        //     beforeEnter: (to, form, next) =>{
-        //         axios.get('/api/authenticated').then(()=>{
-        //             next()
-        //         }).catch(()=>{
-        //             return next({ name: 'Login'})
-        //         })
-        //     }
-        // },
         {
             path: '/packstore',
             name: 'Packstore',

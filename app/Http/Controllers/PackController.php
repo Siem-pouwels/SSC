@@ -53,8 +53,10 @@ class PackController extends Controller
         
         $pack = array_merge($low, $high);// merge the 2 arrays
         // getting the needed id's
-        $id = User::find('id');
-        $team = Team::find($id);
+        // $id = User::find('id');
+        $id = 5;
+        // $team = Team::find($id);
+        $team = 5;
         $duplicate_count = 0;
         foreach($pack as $player)
         {
@@ -66,7 +68,7 @@ class PackController extends Controller
                 user_player_teams::create([
                     'user_id' => $id,
                     'player_id' => $player->id,
-                    'team_id' => $team->id,
+                    'team_id' => $team,
                 ]);
             }
         }
@@ -84,24 +86,18 @@ class PackController extends Controller
 
     public function timeBasic()
     {
-        $user = Auth::user();
-        $current_time = Carbon::now();
+        // $user = Auth::user();
+        $current_time = Carbon::now()->addMinute(30);
+        // dd($current_time);
 
-        $pack_time = Pack::select('updated_at')
-        ->where('user_id', '=', $user->id)
-        ->where('type', '=', '2')
-        ->get()
-        ->diff($current_time);
-        dd($pack_time->diffForHumans());
-        // $remainingTime = $pack_time
-        // dd($current_time->diffInSeconds($pack_time));
-        $remainingTime = $pack_time->diff($current_time);
-        // $remainingTime = 4;
-        // $interval = $pack_time->diff($current_time);
-        print_r($remainingTime);
-        // Pack::
-        // $pack_time =+ Carbon();
-        // $time_left = $current_time $pack_time;
-        // dd($time_left);
+        $packTime = Pack::select('updated_at')
+        ->where('user_id', '=', 5)
+        ->where('type', '=', '1')
+        ->get();
+        $packTime = Carbon::parse($this->pack_time);
+        $current_time = Carbon::parse($this->current_time);
+
+        $totalDuration = $packTime->diffInSeconds($current_time);
+        
     }
 }

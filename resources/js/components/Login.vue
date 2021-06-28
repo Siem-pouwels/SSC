@@ -2,6 +2,7 @@
      <div>
         <div>
             <div><h1>Login to your account</h1></div>
+            <img :src="'../storage/player_faces/card-design.png'">
             <div>
                 <label for="email">Your e-mail</label>
                 <input placeholder="Email" type="email" v-model="form.email">
@@ -28,8 +29,8 @@ export default {
         }
     },
     methods:{
-         loginUser(){
-             axios.post('/api/login', this.form).then(() =>{
+                  loginUser(){
+             axios.post('/api/login', this.form, ).then(() =>{
                  this.$router.push({ name: "Dashboard"}); 
              }).catch((error) =>{
          this.errors = error.response.data.errors;
