@@ -5,6 +5,9 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import NotFound from './components/NotFound';
 import Players from './components/Players';
+import TeamBuilder from './components/TeamBuilder';
+import Packstore from './components/Packstore';
+import Collection from './components/Collection';
 
 
 export default{
@@ -37,21 +40,86 @@ export default{
             path: "/dashboard",
             name: "Dashboard",
             component: Dashboard,
-           beforeEnter: (next) =>{
-               axios.get('/api/athenticated').then(()=>{
+            beforeEnter: (to, form, next) =>{
+                axios.get('/api/athenticated').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({ name: 'Login'})
+                })
+            }
+       
+        },
+        // {
+        //     path: "/players",
+        //     name: "Players",
+        //     component: Players,
+        //    beforeEnter: (to, form, next) =>{
+        //        axios.get('/api/athenticated').then(()=>{
+        //            next()
+        //        }).catch(()=>{
+        //            return next({ name: 'Login'})
+        //        })
+        //    }
+       
+        //   },
+          {
+            path: "/logout",
+           beforeEnter: (to, form, next) =>{
+               axios.get('/api/logout').then(()=>{
                    next()
                }).catch(()=>{
-                   return next({ name: 'Login'})
+                   return next({ name: 'Home'})
                })
            }
        
-        }
-        ,
+          },
+        // {
+        //     path: '/players',
+        //     name: 'Players',
+        //     component: Players,
+        //     beforeEnter: (to, form, next) =>{
+        //         axios.get('/api/authenticated').then(()=>{
+        //             next()
+        //         }).catch(()=>{
+        //             return next({ name: 'Login'})
+        //         })
+        //     }
+        // },
+        // {
+        //     path: '/packstore',
+        //     name: 'Packstore',
+        //     component: Packstore,
+        //     beforeEnter: (to, form, next) =>{
+        //         axios.get('/api/authenticated').then(()=>{
+        //             next()
+        //         }).catch(()=>{
+        //             return next({ name: 'Login'})
+        //         })
+        //     }
+        // },
         {
-            path: '/players',
-            component: Players,
-            name: 'Players'
-        }
-          
+            path: '/packstore',
+            name: 'Packstore',
+            component: Packstore,
+            beforeEnter: (to, form, next) =>{
+                axios.get('/api/athenticated').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({ name: 'Login'})
+                })
+            }
+        },
+        {
+            path: '/collection',
+            name: 'Collection',
+            component: Collection,
+            beforeEnter: (to, form, next) =>{
+                axios.get('/api/athenticated').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({ name: 'Login'})
+                })
+            }
+        },
     ]
 }

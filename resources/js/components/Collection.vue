@@ -30,7 +30,7 @@ export default {
     // }
 
     mounted(){
-        axios.get('/api/team_options').then((res)=>{
+        axios.get('/api/players').then((res)=>{
             this.players = res.data
             console.log(this.players)
         })

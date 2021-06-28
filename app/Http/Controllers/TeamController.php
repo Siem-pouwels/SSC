@@ -25,17 +25,18 @@ class TeamController extends Controller
         // use foreach loop if multiple players are sent at once
     }
     public function getOptions(){
-        //$id = Auth::user()->id;
+        $id = Auth::user()->id;
         $data = user_player_teams::join('players', 'player_id', '=', 'players.id')
-        ->select('user_id','players.id','players.name','players.rating','players.position','players.image')
+        ->select('user_id','players.id','players.name','players.rating','players.position','players.image', 'players.nationality')
         ->where([
-            ['user_id', '=', 3],//<-- change to $id for it to work
+            ['user_id', '=', $id],//<-- change to $id for it to work
             ['user_player_teams.position', '=', NULL]
         ])
         ->orderBy('players.rating', 'desc')
         ->take(5)
         ->get();
-        return json_encode($data);
+        // dd("test");
+        return response()->json($data);
     }
     // dd(json_encode($player));
     public function updatePlayerTeam(Request $request){

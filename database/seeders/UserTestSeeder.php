@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Pack;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\user_player_teams;
@@ -111,6 +112,21 @@ class UserTestSeeder extends Seeder
             'player_id'=>178603,
             'team_id'=>$team->id,
             'position'=>null
+        ]);
+        
+        Pack::create([
+            'user_id' => $user->id,
+            'type' => '1',
+        ]);
+
+        Pack::create([
+            'user_id' => $user->id,
+            'type' => '2',
+        ]);
+
+        Pack::create([
+            'user_id' => $user->id,
+            'type' => '3',
         ]);
     }
 }

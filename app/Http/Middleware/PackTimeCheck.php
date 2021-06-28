@@ -37,10 +37,9 @@ class PackTimeCheck
                 return "Type of pack didn't match";
         }
         
-        dd($request);
         $packUpdate = $pack->updated_at;
-        $currentTime = Carbon::now();
-        $elapsedTime =  $packUpdate->diffInMinutes($currentTime);
+        $packTime = Carbon::now()->addMinutes($time);
+        $elapsedTime =  $packUpdate->diffInMinutes($packTime);
         dd($elapsedTime);
         // if()
     }
