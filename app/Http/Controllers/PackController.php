@@ -18,71 +18,164 @@ use Illuminate\Support\Facades\Storage;
 
 class PackController extends Controller
 {
+    // public function packBasic(){
+    //     $low  = Player::whereBetween('rating', [80, 100])->inRandomOrder()->take(1)->get();
+    //     $mid  = Player::whereBetween('rating', [80, 100])->inRandomOrder()->take(1)->get();
+    //     $high = Player::whereBetween('rating', [80, 100])->inRandomOrder()->take(1)->get();
+    //     $pack = $low.=$mid.=$high;
+    //     // check for duplicates 
+    //     // add rating for duplicated players
+    //     dd(json_encode($pack));
+    // }
+
+    
+
     public function packBasic(){
-        $low  = Player::whereBetween('rating', [80, 100])->inRandomOrder()->take(1)->get();
-        $mid  = Player::whereBetween('rating', [80, 100])->inRandomOrder()->take(1)->get();
+        $low  = Player::whereBetween('rating', [65, 70])->inRandomOrder()->take(1)->get();
+        $mid  = Player::whereBetween('rating', [70, 80])->inRandomOrder()->take(1)->get();
         $high = Player::whereBetween('rating', [80, 100])->inRandomOrder()->take(1)->get();
-        $pack = $low.=$mid.=$high;
-        // check for duplicates 
-        // add rating for duplicated players
-        dd(json_encode($pack));
-    }
+        
+        $user = Auth::user();
+        $team = DB::table('teams')->where('user_id', '=', $user->id)->get('id');
 
+        for ($x = 0; $x <= 0; $x++) {
+            user_player_teams::create([
+                'user_id'=>$user->id,
+                'player_id'=>$low[0][$x]['id'],
+                'team_id'=>$team[0]->id,
+                'position'=>null
+            ]);
+        }
+
+        for ($x = 0; $x <= 0; $x++) {
+            user_player_teams::create([
+                'user_id'=>$user->id,
+                'player_id'=>$mid[0][$x]['id'],
+                'team_id'=>$team[0]->id,
+                'position'=>null
+            ]);
+        }
+
+        for ($x = 0; $x <= 0; $x++) {
+            user_player_teams::create([
+                'user_id'=>$user->id,
+                'player_id'=>$high[0][$x]['id'],
+                'team_id'=>$team[0]->id,
+                'position'=>null
+            ]);
+        }
+
+        $pack = user_player_teams::where('user_id', '=', $user->id)->take(3)->latest()->get();
+        return response()->json($pack); // returns the opened pack
+    }
     public function packNormal(){
-        $low = Player::whereBetween('rating', [50, 70])->inRandomOrder()->take(3)->get();
-        $mid = Player::whereBetween('rating', [70, 80])->inRandomOrder()->take(1)->get();
-        $high = Player::whereBetween('rating', [80, 100])->inRandomOrder()->take(1)->get();
+        $low  = Player::whereBetween('rating', [65, 70])->inRandomOrder()->take(3)->get();
+        $mid  = Player::whereBetween('rating', [70, 80])->inRandomOrder()->take(3)->get();
+        $high = Player::whereBetween('rating', [85, 100])->inRandomOrder()->take(1)->get();
+        
+        $user = Auth::user();
+        $team = DB::table('teams')->where('user_id', '=', $user->id)->get('id');
 
-        $pack = $low.=$mid.=$high;
-        return Storage::url("app/hondje.jpg");
-        // dd(Storage::get('hondje.jpg'));
+        for ($x = 0; $x <= 0; $x++) {
+            user_player_teams::create([
+                'user_id'=>$user->id,
+                'player_id'=>$low[0][$x]['id'],
+                'team_id'=>$team[0]->id,
+                'position'=>null
+            ]);
+        }
 
-        // dd(json_encode($pack));
-        // check for duplicates 
-        // add rating for duplicated players
+        for ($x = 0; $x <= 0; $x++) {
+            user_player_teams::create([
+                'user_id'=>$user->id,
+                'player_id'=>$mid[0][$x]['id'],
+                'team_id'=>$team[0]->id,
+                'position'=>null
+            ]);
+        }
 
+        for ($x = 0; $x <= 0; $x++) {
+            user_player_teams::create([
+                'user_id'=>$user->id,
+                'player_id'=>$high[0][$x]['id'],
+                'team_id'=>$team[0]->id,
+                'position'=>null
+            ]);
+        }
 
-        // return Storage::disk('local')->put('pd'.$high[0]['id'].'.png', 'Contents');
-        // echo asset('storage/file.txt');
+        $pack = user_player_teams::where('user_id', '=', $user->id)->take(3)->latest()->get();
+        return response()->json($pack); // returns the opened pack
     }
-
     public function packPremium(){
-        // get players between certain ratings and take there a amount of 
         $low[] = Player::whereBetween('rating', [70, 85])->inRandomOrder()->take(7)->get();
         $high[] = Player::whereBetween('rating', [85, 100])->inRandomOrder()->take(3)->get();
         
-        $pack = array_merge($low, $high);// merge the 2 arrays
-        // getting the needed id's
-        // $id = User::find('id');
-        $id = 5;
-        // $team = Team::find($id);
-        $team = 5;
-        $duplicate_count = 0;
-        foreach($pack as $player)
-        {
-            if(user_player_teams::where('player_id', '=', $player['id'] || 'user_id', '=', $id)) // check if the user allready has the player
-            {
-                $duplicate_count += $player['rating']; // add the duplicate players up
-            }
-            else{ // if it isn't a duplicate store it inside the database
-                user_player_teams::create([
-                    'user_id' => $id,
-                    'player_id' => $player->id,
-                    'team_id' => $team,
-                ]);
-            }
-        }
-        if(Duplicate::find('rating')){
-            $duplicate_count = $duplicate_count += Duplicate::find('rating'); // adds the duplicate rating up
-        }
-        Duplicate::updateOrCreate(
-            ['id' => $id, 'rating' => $duplicate_count],
-        );
-        $pack_update = Pack::where('user_id', '=', $id || 'type', '=', '3');
-        $pack_update->updated_at = Carbon::now();
+        $user = Auth::user();
+        $team = DB::table('teams')->where('user_id', '=', $user->id)->get('id');
 
+        for ($x = 0; $x <= 6; $x++) {
+            user_player_teams::create([
+                'user_id'=>$user->id,
+                'player_id'=>$low[0][$x]['id'],
+                'team_id'=>$team[0]->id,
+                'position'=>null
+            ]);
+        } 
+
+        for ($x = 0; $x <= 2; $x++) {
+            user_player_teams::create([
+                'user_id'=>$user->id,
+                'player_id'=>$high[0][$x]['id'],
+                'team_id'=>$team[0]->id,
+                'position'=>null
+            ]);
+        } 
+        $playerId[] = user_player_teams::where('user_id', '=', $user->id)->take(10)->latest()->get('id');
+        dd($playerId[0][0]);
+        $pack=[];
+        foreach($playerId as $pId){
+            $pack = Player::where('id', '=', $pId)->get();
+        }
         return response()->json($pack); // returns the opened pack
     }
+
+    // public function packPremium(){
+    //     // get players between certain ratings and take there a amount of 
+    //     $low[] = Player::whereBetween('rating', [70, 85])->inRandomOrder()->take(7)->get();
+    //     $high[] = Player::whereBetween('rating', [85, 100])->inRandomOrder()->take(3)->get();
+        
+    //     $pack = array_merge($low, $high);// merge the 2 arrays
+    //     // getting the needed id's
+    //     // $id = User::find('id');
+    //     $id = 5;
+    //     // $team = Team::find($id);
+    //     $team = 5;
+    //     $duplicate_count = 0;
+    //     foreach($pack as $player)
+    //     {
+    //         if(user_player_teams::where('player_id', '=', $player['id'] || 'user_id', '=', $id)) // check if the user allready has the player
+    //         {
+    //             $duplicate_count += $player['rating']; // add the duplicate players up
+    //         }
+    //         else{ // if it isn't a duplicate store it inside the database
+    //             user_player_teams::create([
+    //                 'user_id' => $id,
+    //                 'player_id' => $player->id,
+    //                 'team_id' => $team,
+    //             ]);
+    //         }
+    //     }
+    //     if(Duplicate::find('rating')){
+    //         $duplicate_count = $duplicate_count += Duplicate::find('rating'); // adds the duplicate rating up
+    //     }
+    //     Duplicate::updateOrCreate(
+    //         ['id' => $id, 'rating' => $duplicate_count],
+    //     );
+    //     $pack_update = Pack::where('user_id', '=', $id || 'type', '=', '3');
+    //     $pack_update->updated_at = Carbon::now();
+
+    //     return response()->json($pack); // returns the opened pack
+    // }
 
     public function timeBasic()
     {
