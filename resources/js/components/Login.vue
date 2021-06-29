@@ -1,29 +1,20 @@
 <template>
-     <div>
+    <div class="background">
         <div>
-            <div><h1>Login to your account</h1></div>
-            <div>
-                <label for="email">Your e-mail</label>
-                <input placeholder="Email" type="email" v-model="form.email">
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input class="nav-gold" placeholder="Password" type="password" v-model="form.password" name="password">
-            </div>
-            <div>
-                <button @click.prevent="loginUser" type="submit">Login</button>
-            </div>
-            <div class="players-container">
-                <div class="card-container w-100 bg-dark">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'">
-                    <img class="player-image" :src="'../storage/player_faces/notfound_0.png'">
+            <div class="box">
+                    <span class="text-center">login</span>
+                <div class="input-container">
+                    <input type="email" v-model="form.email" required=""/>
+                    <label>Email</label>		
                 </div>
+                <div class="input-container">		
+                    <input type="password" v-model="form.password" required=""/>
+                    <label>Password</label>
+                </div>
+                    <button @click.prevent="loginUser" type="submit" class="btn">submit</button>
             </div>
-            
         </div> 
     </div>
-
-    
 </template>
 <script>
 export default {
@@ -67,5 +58,96 @@ export default {
         display: inline-block;
         z-index: -1;
         display: relative;
+    }
+
+    input{
+        color: black;
+    }
+
+    button{
+        color: black;
+    }
+    
+    @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
+
+    .background{
+        background-image: url("http://localhost:8000/images/background.jpeg");
+        background-position: center;
+        background-origin: content-box;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height:100vh;
+        font-family: 'Noto Sans', sans-serif;
+    }
+    .text-center{
+        color:#fff;	
+        text-transform:uppercase;
+        font-size: 23px;
+        margin: -50px 0 80px 0;
+        display: block;
+        text-align: center;
+    }
+    .box{
+        position:absolute;
+        left:50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+        background-color: rgba(0, 0, 0, 0.89);
+        border-radius:3px;
+        padding:70px 100px;
+    }
+    .input-container{
+        position:relative;
+        margin-bottom:25px;
+    }
+    .input-container label{
+        position:absolute;
+        top:0px;
+        left:0px;
+        font-size:16px;
+        color:#fff;	
+        transition: all 0.5s ease-in-out;
+    }
+    .input-container input{ 
+    border:0;
+    border-bottom:1px solid #555;  
+    background:transparent;
+    width:100%;
+    padding:8px 0 5px 0;
+    font-size:16px;
+    color:#fff;
+    }
+    .input-container input:focus{ 
+    border:none;	
+    outline:none;
+    border-bottom:1px solid #e74c3c;	
+    }
+    .btn{
+        color:#fff;
+        background-color:#DCBE38;
+        outline: none;
+        border: 0;
+        color: #fff;
+        padding:10px 20px;
+        text-transform:uppercase;
+        margin-top:50px;
+        border-radius:2px;
+        cursor:pointer;
+        position:relative;
+    }
+    /*.btn:after{
+        content:"";
+        position:absolute;
+        background:rgba(0,0,0,0.50);
+        top:0;
+        right:0;
+        width:100%;
+        height:100%;
+    }*/
+    .input-container input:focus ~ label,
+    .input-container input:valid ~ label{
+        top:-12px;
+        font-size:12px;
+        
     }
 </style>
