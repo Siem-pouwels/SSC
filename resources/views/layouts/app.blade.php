@@ -145,4 +145,21 @@
       width: 70%;
       margin: 0 auto;
     }
+
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 35px; 
+      background-color: #343a40;
+      color: #DCBE38;
+      text-align: center;
+    }
+
+    .footer-text {
+      text-align: center;
+      font-size: 20px;
+      margin: 0 auto;
+    }
   </style>
