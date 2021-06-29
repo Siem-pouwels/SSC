@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: #191919;
     font-weight: 600;
     text-align: center !important;
@@ -13,7 +13,6 @@ body {
     width: 16px;
     height: 16px;
 }
-/* code for making hover effects */
 .hoverable {
     display: inline-block;
     backface-visibility: hidden;
@@ -37,7 +36,6 @@ body {
     opacity: 0;
     background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
     background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
-    /* W3C */
     transition-duration: 0.3s;
     transition-property: transform, opacity;
   }
@@ -82,7 +80,6 @@ body {
     animation-duration: 2s;
   }
   
-  /*everything below here is just setting up the page, so dont worry about it */
   @media (min-width: 768px) {
     .navbar_main {
       text-align: center !important;
@@ -113,4 +110,4 @@ body {
   #myCarousel {
     width: 70%;
     margin: 0 auto;
-  }
+  } */

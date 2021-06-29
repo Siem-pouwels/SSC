@@ -12,7 +12,7 @@ import Collection from './components/Collection';
 
 export default{
     mode: 'history',
-    linkActiveClass: 'font-semibold',
+    // linkActiveClass: 'font-semibold',
     routes: [
         {
             path: "/dashboard",
@@ -52,8 +52,9 @@ export default{
         {
             path: "/logout",
            beforeEnter: (to, form, next) =>{
-               axios.get('/api/logout').then(()=>{
-                   next()
+               axios.post('/api/logout').then(()=>{
+                window.location.reload()
+                return next({ name: 'Home'})
                }).catch(()=>{
                    return next({ name: 'Home'})
                })

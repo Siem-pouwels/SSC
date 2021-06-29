@@ -23,14 +23,21 @@
         <router-link class="nav-link" to="/packstore"><div class="gold-nav hoverable">Packstore</div></router-link>
       </li>
       <li class="nav-item mr-sm-0">
+        <router-link class="nav-link" to="/collection"><div class="gold-nav hoverable">Collection</div></router-link>
+      </li>
+      @if (Auth::check())
+      <li class="nav-item mr-sm-0">
+        <router-link class="nav-link" to="/logout"><div class="gold-nav hoverable">Logout</div></router-link>
+      </li> 
+      @else
+      <li class="nav-item mr-sm-0">
         <router-link class="nav-link" to="/login"><div class="gold-nav hoverable">Login</div></router-link>
       </li>
-    <li class="nav-item mr-sm-0">
-      <router-link class="nav-link" to="/register"><div class="gold-nav hoverable">Register</div></router-link>
-    </li>
-    <li class="nav-item mr-sm-0">
-      <router-link class="nav-link" to="/collection"><div class="gold-nav hoverable">Collection</div></router-link>
-    </li>
+      <li class="nav-item mr-sm-0">
+        <router-link class="nav-link" to="/register"><div class="gold-nav hoverable">Register</div></router-link>
+      </li>
+      @endif
+      
     </ul>
     
   </div>
