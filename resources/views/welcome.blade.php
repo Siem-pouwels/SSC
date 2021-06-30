@@ -10,7 +10,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <img class="mr-sm-0" :src="'../storage/player_faces/SSC_LOGO.png'" height="50px">
+      <img class="ssc-logo mr-sm-0" :src="'../storage/player_faces/SSC_LOGO.png'" height="50px">
       <li class="nav-item active">
         <router-link class="nav-link" to="/"><div class="gold-nav hoverable">Home</div></router-link>
       </li>

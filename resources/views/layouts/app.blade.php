@@ -162,4 +162,10 @@
       font-size: 20px;
       margin: 0 auto;
     }
+
+    @media (max-width: 991px) {
+      .ssc-logo {
+        display: none;
+      }
+    }
   </style>

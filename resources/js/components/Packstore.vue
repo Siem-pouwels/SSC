@@ -32,7 +32,6 @@
 </template>
 <style>
     .basic {float:left; margin-left: 10%;}
-    .normal {float:left; margin-left: 10%;}
     .ultimate {float:right; margin-right: 10%;}
     .card-container {margin: 0 auto;}
     .card {height: 400px; width: 300px; text-align: center; display: inline-block; background-color: #343a40;}
