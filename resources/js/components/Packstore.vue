@@ -5,27 +5,29 @@
                 <div class="card-container">
             <div class="card basic">
             <img :src="'../storage/player_faces/pack_bronze.png'" class="card-img-top">
-            <div class="card-body ">
-            <h5 class="card-title">Basic Pack</h5>
-            <p class="card-text">Remaining time: 00:00:00</p>
-            <button href="#" class="btn btn-warning" >Open Pack</button>
+                <div class="card-body ">
+                    <h5 class="card-title">Basic Pack</h5>
+                    <p class="card-text">Remaining time: 00:00:00</p>
+                    <button @click.prevent="basicPack" type="submit">Open pack</button>
+                </div>
             </div>
-            </div>
+
             <div class="card normal">
             <img :src="'../storage/player_faces/pack_silver.png'" class="card-img-top">
-            <div class="card-body">
-            <h5 class="card-title">Normal Pack</h5>
-            <p class="card-text">Remaining time: 00:00:00</p>
-            <a href="#" class="btn btn-warning">Open Pack</a>
+                <div class="card-body">
+                    <h5 class="card-title">Normal Pack</h5>
+                    <p class="card-text">Remaining time: 00:00:00</p>
+                    <button @click.prevent="normalPack" type="submit">Test Packstore</button>
+                </div>
             </div>
-            </div>
+
             <div class="card ultimate">
             <img :src="'../storage/player_faces/pack_gold.png'" class="card-img-top">
-            <div class="card-body">
-            <h5 class="card-title">Ultimate Pack</h5>
-            <p class="card-text">Remaining time: 00:00:00</p>
-            <a href="#" class="btn btn-warning">Open Pack</a>
-            </div>
+                <div class="card-body">
+                    <h5 class="card-title">Ultimate Pack</h5>
+                    <p class="card-text">Remaining time: 00:00:00</p>
+                    <button @click.prevent="premiumPack" type="submit">Test Packstore</button>
+                </div>
             </div>
         </div>
     </div>
@@ -48,21 +50,21 @@ export default {
     },
 
     methods:{
-        pack_1(){
+        basicPack(){
             axios.post('/api/pack_1').then((res)=>{
                 this.pack = res.data
                 console.log(this.players)
             })
         },
     
-        pack_2(){
+        normalPack(){
             axios.post('/api/pack_2').then((res)=>{
                 this.pack = res.data
                 console.log(this.players)
             })
         },
     
-        premium_pack(){
+        premiumPack(){
             axios.post('/api/pack_3').then((res)=>{
                 this.pack = res.data
                 console.log(this.players)
