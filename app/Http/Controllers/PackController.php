@@ -31,61 +31,62 @@ class PackController extends Controller
     
 
     public function packBasic(){
-        $low  = Player::whereBetween('rating', [65, 70])->inRandomOrder()->take(1)->get();
-        $mid  = Player::whereBetween('rating', [70, 80])->inRandomOrder()->take(1)->get();
-        $high = Player::whereBetween('rating', [80, 100])->inRandomOrder()->take(1)->get();
+        $low[]  = Player::whereBetween('rating', [65, 70])->inRandomOrder()->take(1)->get();
+        $mid[]  = Player::whereBetween('rating', [70, 80])->inRandomOrder()->take(1)->get();
+        $high[] = Player::whereBetween('rating', [80, 100])->inRandomOrder()->take(1)->get();
         
         $user = Auth::user();
         $team = DB::table('teams')->where('user_id', '=', $user->id)->get('id');
 
-        for ($x = 0; $x <= 0; $x++) {
-            user_player_teams::create([
-                'user_id'=>$user->id,
-                'player_id'=>$low[0][$x]['id'],
-                'team_id'=>$team[0]->id,
-                'position'=>null
-            ]);
-        }
+        user_player_teams::create([
+            'user_id'=>$user->id,
+            'player_id'=>$low[0][0]['id'],
+            'team_id'=>$team[0]->id,
+            'position'=>null
+        ]);
+        user_player_teams::create([
+            'user_id'=>$user->id,
+            'player_id'=>$mid[0][0]['id'],
+            'team_id'=>$team[0]->id,
+            'position'=>null
+        ]);
 
-        for ($x = 0; $x <= 0; $x++) {
-            user_player_teams::create([
-                'user_id'=>$user->id,
-                'player_id'=>$mid[0][$x]['id'],
-                'team_id'=>$team[0]->id,
-                'position'=>null
-            ]);
-        }
+        user_player_teams::create([
+            'user_id'=>$user->id,
+            'player_id'=>$high[0][0]['id'],
+            'team_id'=>$team[0]->id,
+            'position'=>null
+        ]);
 
-        for ($x = 0; $x <= 0; $x++) {
-            user_player_teams::create([
-                'user_id'=>$user->id,
-                'player_id'=>$high[0][$x]['id'],
-                'team_id'=>$team[0]->id,
-                'position'=>null
-            ]);
-        }
+        $pack = DB::table('user_player_teams')
+        ->join('users', 'user_player_teams.user_id', '=', 'users.id')
+        ->join('players', 'user_player_teams.player_id', '=', 'players.id')
+        ->select('*')
+        ->where('user_id', '=', $user->id)
+        ->take(3)
+        ->latest('user_player_teams.created_at')
+        ->get();
 
-        $pack = user_player_teams::where('user_id', '=', $user->id)->take(3)->latest()->get();
         return response()->json($pack); // returns the opened pack
     }
     public function packNormal(){
-        $low  = Player::whereBetween('rating', [65, 70])->inRandomOrder()->take(3)->get();
-        $mid  = Player::whereBetween('rating', [70, 80])->inRandomOrder()->take(3)->get();
-        $high = Player::whereBetween('rating', [85, 100])->inRandomOrder()->take(1)->get();
+        $low[]  = Player::whereBetween('rating', [65, 70])->inRandomOrder()->take(3)->get();
+        $mid[]  = Player::whereBetween('rating', [70, 80])->inRandomOrder()->take(3)->get();
+        $high[] = Player::whereBetween('rating', [85, 100])->inRandomOrder()->take(1)->get();
         
         $user = Auth::user();
         $team = DB::table('teams')->where('user_id', '=', $user->id)->get('id');
 
-        for ($x = 0; $x <= 0; $x++) {
+        for ($x = 0; $x <= 2; $x++) {
             user_player_teams::create([
                 'user_id'=>$user->id,
                 'player_id'=>$low[0][$x]['id'],
                 'team_id'=>$team[0]->id,
                 'position'=>null
             ]);
-        }
+        } 
 
-        for ($x = 0; $x <= 0; $x++) {
+        for ($x = 0; $x <= 2; $x++) {
             user_player_teams::create([
                 'user_id'=>$user->id,
                 'player_id'=>$mid[0][$x]['id'],
@@ -94,16 +95,22 @@ class PackController extends Controller
             ]);
         }
 
-        for ($x = 0; $x <= 0; $x++) {
-            user_player_teams::create([
-                'user_id'=>$user->id,
-                'player_id'=>$high[0][$x]['id'],
-                'team_id'=>$team[0]->id,
-                'position'=>null
-            ]);
-        }
+        user_player_teams::create([
+            'user_id'=>$user->id,
+            'player_id'=>$high[0][0]['id'],
+            'team_id'=>$team[0]->id,
+            'position'=>null
+        ]);
 
-        $pack = user_player_teams::where('user_id', '=', $user->id)->take(3)->latest()->get();
+        $pack = DB::table('user_player_teams')
+        ->join('users', 'user_player_teams.user_id', '=', 'users.id')
+        ->join('players', 'user_player_teams.player_id', '=', 'players.id')
+        ->select('*')
+        ->where('user_id', '=', $user->id)
+        ->take(7)
+        ->latest('user_player_teams.created_at')
+        ->get();
+
         return response()->json($pack); // returns the opened pack
     }
     public function packPremium(){
@@ -130,12 +137,19 @@ class PackController extends Controller
                 'position'=>null
             ]);
         } 
-        $playerId[] = user_player_teams::where('user_id', '=', $user->id)->take(10)->latest()->get('id');
-        dd($playerId[0][0]);
-        $pack=[];
-        foreach($playerId as $pId){
-            $pack = Player::where('id', '=', $pId)->get();
-        }
+        // $pack = user_player_teams::where('user_id', '=', $user->id)->take(10)->latest()->get();
+
+        $pack = DB::table('user_player_teams')
+        ->join('users', 'user_player_teams.user_id', '=', 'users.id')
+        ->join('players', 'user_player_teams.player_id', '=', 'players.id')
+        ->select('*')
+        ->where('user_id', '=', $user->id)
+        ->take(10)
+        ->latest('user_player_teams.created_at')
+        ->get();
+
+        // dd($playerId[0][0]);
+
         return response()->json($pack); // returns the opened pack
     }
 

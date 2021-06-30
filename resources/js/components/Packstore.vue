@@ -1,7 +1,6 @@
 <template>
     <div>
         Packstore
-        <button @click.prevent="premium_pack" type="submit">Test Packstore</button>
                 <div class="card-container">
             <div class="card basic">
             <img :src="'../storage/player_faces/pack_bronze.png'" class="card-img-top">
