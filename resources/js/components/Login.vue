@@ -82,7 +82,7 @@ export default {
     .text-center{
         color:#fff;	
         text-transform:uppercase;
-        font-size: 23px;
+        font-size: 22px;
         margin: -50px 0 80px 0;
         display: block;
         text-align: center;
