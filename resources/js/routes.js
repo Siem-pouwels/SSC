@@ -85,5 +85,17 @@ export default{
                 })
             }
         },
+        {
+            path: '/teambuilder',
+            name: 'TeamBuilder',
+            component: TeamBuilder,
+            beforeEnter: (to, form, next) =>{
+                axios.get('/api/athenticated').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({ name: 'Login'})
+                })
+            }
+        },
     ]
 }
