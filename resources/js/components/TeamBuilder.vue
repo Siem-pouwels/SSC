@@ -3,37 +3,37 @@
         <div class="background">
             <div class="container-fluid">
                 <div class="pos_11">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
                 <div class="pos_10">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
                 <div class="pos_9">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
                 <div class="pos_8">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
                 <div class="pos_7">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
                 <div class="pos_6">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
                 <div class="pos_5">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
                 <div class="pos_4">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
                 <div class="pos_3">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
                 <div class="pos_2">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
                 <div class="pos_1">
-                    <img :src="'http://localhost:8000/storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                 </div>
             </div>
         </div>
