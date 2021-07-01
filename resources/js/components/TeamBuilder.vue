@@ -5,41 +5,100 @@
             <div class="container-fluid">
                 <div class="pos_11">
                     <img :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img class="player_face" :src="'../storage/player_faces/p167495.png'" height="40px">
+                    <p class="player_name">Manuel Neuer</p>
+                    <img class="player_nation" :src="'../storage/player_faces/Germany.png'" height="10px">
+                    <p class="player_rating">90</p>
+                    <p class="player_position">GK</p>
+                </div>
+                <div class="pos_10">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img class="player_face" :src="'../storage/player_faces/p233096.png'" height="40px">
+                    <p class="player_name">Denzel Dumfries</p>
+                    <img class="player_nation" :src="'../storage/player_faces/Netherlands.png'" height="10px">
+                    <p class="player_rating">80</p>
+                    <p class="player_position">DEF</p>                
+                </div>
+
+                <div class="pos_9">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img class="player_face" :src="'../storage/player_faces/p203263.png'" height="40px">
+                    <p class="player_name">Harry Maguire</p>
+                    <img class="player_nation" :src="'../storage/player_faces/England.png'" height="10px">
+                    <p class="player_rating">81</p>
+                    <p class="player_position">MID</p>
+                </div>
+
+                <div class="pos_8">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img class="player_face" :src="'../storage/player_faces/p155862.png'" height="40px">
+                    <p class="player_name">Sergio Ramos</p>
+                    <img class="player_nation" :src="'../storage/player_faces/Spain.png'" height="10px">
+                    <p class="player_rating">89</p>
+                    <p class="player_position">DEF</p>
+                </div>
+
+                <div class="pos_7">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img class="player_face" :src="'../storage/player_faces/p234396.png'" height="40px">
+                    <p class="player_name">Alphonso Davies</p>
+                    <img class="player_nation" :src="'../storage/player_faces/Canada.png'" height="10px">
+                    <p class="player_rating">81</p>
+                    <p class="player_position">DEF</p>
+                </div>
+
+                <div class="pos_6">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img class="player_face" :src="'../storage/player_faces/p235134.png'" height="40px">
+                    <p class="player_name">Pablo Rosario</p>
+                    <img class="player_nation" :src="'../storage/player_faces/Netherlands.png'" height="10px">
+                    <p class="player_rating">75</p>
+                    <p class="player_position">MID</p>
+                </div>
+
+                <div class="pos_5">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img class="player_face" :src="'../storage/player_faces/p221363.png'" height="40px">
+                    <p class="player_name">Donny van de Beek</p>
+                    <img class="player_nation" :src="'../storage/player_faces/Netherlands.png'" height="10px">
+                    <p class="player_rating">83</p>
+                    <p class="player_position">MID</p>
+                </div>
+
+                <div class="pos_4">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
                     <img class="player_face" :src="'../storage/player_faces/p41.png'" height="40px">
                     <p class="player_name">Andres Iniesta</p>
                     <img class="player_nation" :src="'../storage/player_faces/Spain.png'" height="10px">
                     <p class="player_rating">81</p>
                     <p class="player_position">MID</p>
                 </div>
-                <div class="pos_10">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'" height="120px">
-                </div>
-                <div class="pos_9">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'" height="120px">
-                </div>
-                <div class="pos_8">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'" height="120px">
-                </div>
-                <div class="pos_7">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'" height="120px">
-                </div>
-                <div class="pos_6">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'" height="120px">
-                </div>
-                <div class="pos_5">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'" height="120px">
-                </div>
-                <div class="pos_4">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'" height="120px">
-                </div>
+
                 <div class="pos_3">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img class="player_face" :src="'../storage/player_faces/p190871.png'" height="40px">
+                    <p class="player_name">Neymar Jr</p>
+                    <img class="player_nation" :src="'../storage/player_faces/Brazil.png'" height="10px">
+                    <p class="player_rating">91</p>
+                    <p class="player_position">ATT</p>
                 </div>
+
                 <div class="pos_2">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img class="player_face" :src="'../storage/player_faces/p158023.png'" height="40px">
+                    <p class="player_name">Lionel Messi</p>
+                    <img class="player_nation" :src="'../storage/player_faces/Argentina.png'" height="10px">
+                    <p class="player_rating">93</p>
+                    <p class="player_position">ATT</p>
                 </div>
+
                 <div class="pos_1">
-                    <img class="card-design" :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img :src="'../storage/player_faces/card-design.png'" height="120px">
+                    <img class="player_face" :src="'../storage/player_faces/p20801.png'" height="40px">
+                    <p class="player_name">Cristiano Ronaldo</p>
+                    <img class="player_nation" :src="'../storage/player_faces/Portugal.png'" height="10px">
+                    <p class="player_rating">92</p>
+                    <p class="player_position">ATT</p>
                 </div>
             </div>
         </div>
@@ -178,8 +237,14 @@
 export default {
     data() {
         return{
-            
+            players: '',
         }
+    },
+    mounted(){
+        axios.get('/api/team_players').then((res)=>{
+            this.players = res.data
+            console.log(this.players)
+        })
     }
 }
 </script>

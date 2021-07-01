@@ -15,7 +15,7 @@
         <router-link class="nav-link" to="/"><div class="gold-nav hoverable">Home</div></router-link>
       </li>
       <li class="nav-item ml-5">
-        <router-link class="nav-link" to="/players"><div class="gold-nav hoverable">Players</div></router-link>
+        <router-link class="nav-link" to="/players"><div class="gold-nav hoverable">Top 100 players</div></router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" to="/teambuilder"><div class="gold-nav hoverable">Teambuilder</div></router-link>
