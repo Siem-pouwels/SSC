@@ -2,16 +2,16 @@
     <div>
         Packstore
                 <div class="card-container">
-            <div class="card basic">
+            <div class="card basic" v-if="!seen">
             <img :src="'../storage/player_faces/pack_bronze.png'" class="card-img-top">
                 <div class="card-body ">
                     <h5 class="card-title">Basic Pack</h5>
                     <p class="card-text">Remaining time: 00:00:00</p>
-                    <button @click.prevent="basicPack" type="submit">Open pack</button>
+                    <button @click.prevent="basicPack" type="submit" >Open pack</button>
                 </div>
             </div>
 
-            <div class="card normal">
+            <div class="card normal"  v-if="!seen">
             <img :src="'../storage/player_faces/pack_silver.png'" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Normal Pack</h5>
@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <div class="card ultimate">
+            <div class="card ultimate"  v-if="!seen">
             <img :src="'../storage/player_faces/pack_gold.png'" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Ultimate Pack</h5>
@@ -39,6 +39,7 @@
                 </div>
             </div>
         </div>
+        <button alt="jijjijgkokogeokgew" id="button2"></button>
     </div>
 </template>
 <style>
@@ -99,12 +100,15 @@
     left: 10%;
     font-size: 16px;
 }
+
 </style>
 <script>
 export default {
     data(){
         return {
             players: '',
+            el:'#hide',
+            seen: false,
         }
     },
 
@@ -113,6 +117,7 @@ export default {
             axios.post('/api/pack_1').then((res)=>{
                 this.players = res.data
                 console.log(this.players)
+                this.seen = true
             })
         },
     
@@ -120,6 +125,7 @@ export default {
             axios.post('/api/pack_2').then((res)=>{
                 this.players = res.data
                 console.log(this.players)
+                this.seen = true
             })
         },
     
@@ -127,6 +133,7 @@ export default {
             axios.post('/api/pack_3').then((res)=>{
                 this.players = res.data
                 console.log(this.players)
+                this.seen = true
             })
         },
     }
