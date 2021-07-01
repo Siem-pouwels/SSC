@@ -1,11 +1,12 @@
 <template>
     <div class="dashboard">
-        <img :src="'../images/account.jpg'" class="accountimage">
+        <img :src="'../storage/player_faces/account.png'" class="accountimage">
         <div class="dashboard-text">
         Dashboard <br>
         <div v-if="user">
         Name: {{user.name}} <br>
-        Email: {{user.email}}<br><br>
+        Email: {{user.email}}<br>
+        {{count}}/19117<br><br>
         <button @click.prevent="logout" class="glow-on-hover">Logout</button>
         </div>
       </div>
@@ -89,7 +90,8 @@
 export default {
     data(){
         return{
-            user: null
+            user: null,
+            count: null,
         }
     },
     methods:{
@@ -102,6 +104,10 @@ export default {
     mounted(){
         axios.get('/api/user').then((res)=>{
             this.user = res.data
+        })
+
+        axios.get('/api/cardCount').then((res)=>{
+            this.count = res.data
         })
     }
 }

@@ -73,4 +73,18 @@ class PlayerController extends Controller
 
         return response()->json($players);
     }
+
+    public function getTop(){
+        $players = Player::orderByDesc('players.rating')
+        ->take(100)
+        ->get();
+
+        return response()->json($players);
+    }
+
+    public function cardCount(){
+        $count = user_player_teams::count('id');
+        
+        return response()->json($count);
+    }
 }
