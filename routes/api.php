@@ -36,6 +36,9 @@ Route::post('team_delete', 'App\Http\Controllers\TeamController@DeleteTeam');
 // Route::get('pack_2', 'App\Http\Controllers\PackController@timeNormal');
 // Route::get('pack_3', 'App\Http\Controllers\PackController@timePremium');
 
+Route::get('team_players', 'App\Http\Controllers\PlayerController@getTeam');
+
+
 // Route::middleware([PackTimeCheck::class])->group(function () {
     Route::post('pack_1', 'App\Http\Controllers\PackController@packBasic');
     Route::post('pack_2', 'App\Http\Controllers\PackController@packNormal');
