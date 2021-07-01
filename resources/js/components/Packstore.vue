@@ -1,13 +1,11 @@
 <template>
     <div>
-        Packstore
                 <div class="card-container">
             <div class="card basic" v-if="!seen">
             <img :src="'../storage/player_faces/pack_bronze.png'" class="card-img-top">
                 <div class="card-body ">
                     <h5 class="card-title">Basic Pack</h5>
-                    <p class="card-text">Remaining time: 00:00:00</p>
-                    <button @click.prevent="basicPack" type="submit" >Open pack</button>
+                    <button @click.prevent="basicPack" class="btn-warning" type="submit" >Open pack</button>
                 </div>
             </div>
 
@@ -15,8 +13,7 @@
             <img :src="'../storage/player_faces/pack_silver.png'" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Normal Pack</h5>
-                    <p class="card-text">Remaining time: 00:00:00</p>
-                    <button @click.prevent="normalPack" type="submit">Test Packstore</button>
+                    <button @click.prevent="normalPack" class="btn-warning" type="submit">Open pack</button>
                 </div>
             </div>
 
@@ -24,8 +21,7 @@
             <img :src="'../storage/player_faces/pack_gold.png'" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Ultimate Pack</h5>
-                    <p class="card-text">Remaining time: 00:00:00</p>
-                    <button @click.prevent="premiumPack" type="submit">Test Packstore</button>
+                    <button @click.prevent="premiumPack" class="btn-warning" type="submit">Open pack</button>
                 </div>
             </div>
             <div class="packed-players">
@@ -45,7 +41,7 @@
 <style>
     .basic {float:left; margin-left: 10%;}
     .ultimate {float:right; margin-right: 10%;}
-    .card-container {margin: 0 auto;}
+    .card-container {margin: 0 auto; margin-top: 10px;}
     .card {height: 400px; width: 300px; text-align: center; display: inline-block; background-color: #343a40;}
     .card-img-top {height: 300px; width: 190px;}
     .card-text {color:#dbbd38;}
