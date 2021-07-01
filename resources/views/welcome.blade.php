@@ -31,7 +31,10 @@
       @if (Auth::check())
       <li class="nav-item mr-sm-0">
         <router-link class="nav-link" to="/logout"><div class="gold-nav hoverable">Logout</div></router-link>
-      </li> 
+      </li>
+      <li class="nav-item mr-sm-0">
+        <router-link class="nav-link" to="/dashboard"><div class="gold-nav hoverable">Dashboard</div></router-link>
+      </li>
       @else
       <li class="nav-item mr-sm-0">
         <router-link class="nav-link" to="/login"><div class="gold-nav hoverable">Login</div></router-link>
